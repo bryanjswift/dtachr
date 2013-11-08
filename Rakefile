@@ -87,8 +87,8 @@ end
 #
 #############################################################################
 
-desc "Build and create tag v#{version}"
-task :release => :build do
+desc "Create tag v#{version}"
+task :release do
   unless `git branch` =~ /^\* master$/
     puts "You must be on the master branch to release!"
     exit!
@@ -96,8 +96,8 @@ task :release => :build do
   sh "git tag v#{version}"
 end
 
-desc "Build and tag v#{version} and push #{gem_file} to Rubygems"
-task :publish => :release do
+desc "Push #{gem_file} to Rubygems"
+task :publish do
   sh "gem push pkg/#{name}-#{version}.gem"
 end
 
