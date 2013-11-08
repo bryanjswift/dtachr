@@ -1,6 +1,8 @@
 # Read $HOME/.dtachr for where to put sockets
 # Generate a 256 character file name if a socket isn't given
 # Everything after the optional socket name is the command
+require 'rubygems'
+require 'bundler/setup'
 require 'docopt'
 
 doc = <<DOCOPT
@@ -18,9 +20,17 @@ Options:
 
 DOCOPT
 
-begin
-  require 'pp'
-  pp Docopt::docopt(doc, version: '0.0.1α')
-rescue Docopt::Exit => e
-  puts e.message
+module Dtachr
+  
+  class Runner
+    
+    def self.call(args)
+      require 'pp'
+      pp Docopt::docopt(doc, { :version => '0.0.1α' })
+    rescue Docopt::Exit => e
+      puts e.message
+    end
+    
+  end
+  
 end
