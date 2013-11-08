@@ -2,7 +2,6 @@
 # Generate a 256 character file name if a socket isn't given
 # Everything after the optional socket name is the command
 require 'rubygems'
-require 'bundler/setup'
 require 'docopt'
 
 module Dtachr
