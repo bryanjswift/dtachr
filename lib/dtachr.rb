@@ -19,18 +19,36 @@ module Dtachr
     Options:
       -h --help         Show this screen
       -v --version      Show the version
-      -c --socket=<sock>   Temporary file to use as socket for dtach command
+      -n --socket=<sock>   Temporary file to use as socket for dtach command
 
     DOCOPT
   
   class Runner
     
-    def self.call(args)
-      require 'pp'
-      opts = Docopt::docopt(Dtachr::DOC, { :version => Dtachr::VERSION })
-      pp opts
+    def initialize(args)
+      @opts = Docopt::docopt(Dtachr::DOC, {
+        :argv => args,
+        :version => Dtachr::VERSION
+      })
+      @socket = @opts['socket'] || gen_socket
+      @command = @opts['<parts>'].join(' ')
     rescue Docopt::Exit => e
       puts e.message
+    end
+    
+    def call
+      return unless @opts
+      execute("dtach -n #{@socket} #{@command} && terminal-notifier -message '`#{@command}` finished.'")
+    end
+    
+    private
+    
+    def execute(command)
+      `#{command}`
+    end
+    
+    def gen_socket
+      "tmp"
     end
     
   end

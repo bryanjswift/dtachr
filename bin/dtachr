@@ -2,4 +2,5 @@
 
 require 'dtachr'
 
-Dtachr::Runner.call(ARGV)
+dtr = Dtachr::Runner.new(ARGV)
+dtr.call
