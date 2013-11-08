@@ -5,30 +5,30 @@ require 'rubygems'
 require 'bundler/setup'
 require 'docopt'
 
-doc = <<DOCOPT
-dtachr
-
-Usage:
-  #{__FILE__} [--socket=<sock>] <command>
-  #{__FILE__} -h | --help
-  #{__FILE__} -v | --version
-
-Options:
-  -h --help         Show this screen
-  -v --version      Show the version
-  --socket=<sock>   Temporary file to use as socket for dtach command
-
-DOCOPT
-
 module Dtachr
   
   VERSION = '0.0.1'
+  DOC = <<-DOCOPT
+    dtachr
+
+    Usage:
+      #{__FILE__} [--socket=<sock>] <parts>...
+      #{__FILE__} -h | --help
+      #{__FILE__} -v | --version
+
+    Options:
+      -h --help         Show this screen
+      -v --version      Show the version
+      -c --socket=<sock>   Temporary file to use as socket for dtach command
+
+    DOCOPT
   
   class Runner
     
     def self.call(args)
       require 'pp'
-      pp Docopt::docopt(doc, { :version => Dtachr::VERSION })
+      opts = Docopt::docopt(Dtachr::DOC, { :version => Dtachr::VERSION })
+      pp opts
     rescue Docopt::Exit => e
       puts e.message
     end

@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
-require './lib/dtachr'
+
+require 'dtachr'
 
 Dtachr::Runner.call(ARGV)
