@@ -5,10 +5,10 @@ require 'rubygems'
 require 'docopt'
 
 module Dtachr
-  
+
   VERSION = '0.0.3b'
   NAME = 'dtachr'
-  
+
   DOC = <<-DOCOPT
     dtachr
 
@@ -23,9 +23,9 @@ module Dtachr
       -n --socket=<sock>    Temporary file to use as socket for dtach command
 
     DOCOPT
-  
+
   class Runner
-    
+
     def initialize(args)
       @opts = Docopt::docopt(Dtachr::DOC, {
         :argv => args,
@@ -36,14 +36,14 @@ module Dtachr
     rescue Docopt::Exit => e
       puts e.message
     end
-    
+
     def call
       return unless @opts
       execute("dtach -n #{@socket} #{@command} && terminal-notifier -message '`#{@command}` finished.'")
     end
-    
+
     private
-    
+
     def execute(command)
       `#{command}`
     end
@@ -51,7 +51,7 @@ module Dtachr
     def gen_socket
       "tmp"
     end
-    
+
   end
-  
+
 end
