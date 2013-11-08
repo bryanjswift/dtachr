@@ -16,9 +16,9 @@ module Dtachr
       #{__FILE__} -v | --version
 
     Options:
-      -h --help         Show this screen
-      -v --version      Show the version
-      -n --socket=<sock>   Temporary file to use as socket for dtach command
+      -h --help             Show this screen
+      -v --version          Show the version
+      -n --socket=<sock>    Temporary file to use as socket for dtach command
 
     DOCOPT
   
