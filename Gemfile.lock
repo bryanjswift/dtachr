@@ -2,9 +2,15 @@ GEM
   remote: https://rubygems.org/
   specs:
     docopt (0.5.0)
+    json (1.8.1)
+    rake (10.1.0)
+    rdoc (4.0.1)
+      json (~> 1.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   docopt
+  rake
+  rdoc

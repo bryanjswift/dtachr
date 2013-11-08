@@ -22,11 +22,13 @@ DOCOPT
 
 module Dtachr
   
+  VERSION = '0.0.1'
+  
   class Runner
     
     def self.call(args)
       require 'pp'
-      pp Docopt::docopt(doc, { :version => '0.0.1α' })
+      pp Docopt::docopt(doc, { :version => Dtachr::VERSION })
     rescue Docopt::Exit => e
       puts e.message
     end
