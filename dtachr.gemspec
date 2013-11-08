@@ -63,6 +63,7 @@ Gem::Specification.new do |s|
     Gemfile.lock
     LICENSE
     README.md
+    Rakefile
     bin/dtachr
     dtachr.gemspec
     lib/dtachr.rb
