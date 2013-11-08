@@ -7,13 +7,15 @@ require 'docopt'
 module Dtachr
   
   VERSION = '0.0.2'
+  NAME = 'dtachr'
+  
   DOC = <<-DOCOPT
     dtachr
 
     Usage:
-      #{__FILE__} [--socket=<sock>] <parts>...
-      #{__FILE__} -h | --help
-      #{__FILE__} -v | --version
+      #{Dtachr::NAME} [--socket=<sock>] <parts>...
+      #{Dtachr::NAME} -h | --help
+      #{Dtachr::NAME} -v | --version
 
     Options:
       -h --help             Show this screen
