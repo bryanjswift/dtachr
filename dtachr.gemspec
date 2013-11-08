@@ -19,8 +19,14 @@ Gem::Specification.new do |s|
 
   ## Make sure your summary is short. The description may be as long
   ## as you like.
-  s.summary     = "Short description used in Gem listings."
-  s.description = "Long description. Maybe copied from the README."
+  s.summary     = "Wrapper for `dtach` utility."
+  s.description = <<DESC
+`dtachr` wraps the [dtach](http://dtach.sourceforge.net) command line utlity
+to automate the creation of a socket file and send a notification to
+[terminal-notifier](https://github.com/alloy/terminal-notifier). This utility
+will only work with both `dtach` and `terminal-notifier` installed and in
+PATH.
+DESC
 
   ## List the primary authors. If there are a bunch of authors, it's probably
   ## better to set the email to an email list or something. If you don't have
