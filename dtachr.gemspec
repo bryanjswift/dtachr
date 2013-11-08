@@ -34,8 +34,8 @@ Gem::Specification.new do |s|
   s.require_paths = %w[lib]
 
   ## This sections is only necessary if you have C extensions.
-  s.require_paths << 'ext'
-  s.extensions = %w[ext/extconf.rb]
+  # s.require_paths << 'ext'
+  # s.extensions = %w[ext/extconf.rb]
 
   ## If your gem includes any executables, list them here.
   s.executables = ["dtachr"]
@@ -43,7 +43,7 @@ Gem::Specification.new do |s|
   ## Specify any RDoc options here. You'll want to add your README and
   ## LICENSE files to the extra_rdoc_files list.
   s.rdoc_options = ["--charset=UTF-8"]
-  s.extra_rdoc_files = %w[README LICENSE]
+  s.extra_rdoc_files = %w[README.md LICENSE]
 
   ## List your runtime dependencies here. Runtime dependencies are those
   ## that are needed for an end user to actually USE your code.
