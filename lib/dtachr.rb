@@ -6,7 +6,7 @@ require 'docopt'
 
 module Dtachr
   
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
   DOC = <<-DOCOPT
     dtachr
 
