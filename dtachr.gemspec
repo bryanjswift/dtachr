@@ -34,6 +34,7 @@ DESC
   s.authors  = ["Bryan Swift"]
   s.email    = 'bryan.j.swift@gmail.com'
   s.homepage = 'http://github.com/bryanjswift/dtachr'
+  s.license  = 'MIT'
 
   ## This gets added to the $LOAD_PATH so that 'lib/NAME.rb' can be required as
   ## require 'NAME.rb' or'/lib/NAME/file.rb' can be as require 'NAME/file.rb'
