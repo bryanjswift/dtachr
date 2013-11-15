@@ -13,14 +13,16 @@ module Dtachr
     dtachr
 
     Usage:
-      #{Dtachr::NAME} [--socket=<sock>] <parts>...
+      #{Dtachr::NAME} [--socket=<sock>] [--title=<title>] [--message=<message>] <parts>...
       #{Dtachr::NAME} -h | --help
       #{Dtachr::NAME} -v | --version
 
     Options:
-      -h --help             Show this screen
-      -v --version          Show the version
-      -n --socket=<sock>    Temporary file to use as socket for dtach command
+      -h --help               Show this screen
+      -v --version            Show the version
+      -n --socket=<sock>      Temporary file to use as socket for dtach command
+      -t --title=<title>      Title to use for terminal-notifier
+      -m --message=<message>  Message to use with terminal-notifier
 
     DOCOPT
 
@@ -39,7 +41,7 @@ module Dtachr
 
     def call
       return unless @opts
-      execute("dtach -n #{@socket} #{@command} && terminal-notifier -message '`#{@command}` finished.'")
+      execute("dtach -n #{@socket} #{@command} && #{notify_command}")
     end
 
     private
@@ -52,6 +54,14 @@ module Dtachr
       candidates = [('a'..'z'), ('A'..'Z'), (0..9)].map { |i| i.to_a }.flatten
       name = (0...32).map { candidates[rand(candidates.length)] }.join
       if (File.exists?(name)) then gen_socket else name end
+    end
+
+    def notify_command
+      notifier = "terminal-notifier"
+      message = '-message ' + (@opts['--message'] || "'`#{@command}` finished.'")
+      title = @opts['--title'].dup if !@opts['--title'].nil?
+      title.insert(0, '-title ') if !title.nil? && title.length > 0
+      [notifier, title, message].join(' ')
     end
 
   end
