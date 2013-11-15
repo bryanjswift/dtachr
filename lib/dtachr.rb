@@ -13,7 +13,7 @@ module Dtachr
     dtachr
 
     Usage:
-      #{Dtachr::NAME} [--socket=<sock>] [--title=<title>] [--message=<message>] <parts>...
+      #{Dtachr::NAME} [--socket=<sock>] [--title=<title>] [--message=<message>] [--] <parts>...
       #{Dtachr::NAME} -h | --help
       #{Dtachr::NAME} -v | --version
 
