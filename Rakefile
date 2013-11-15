@@ -93,7 +93,7 @@ task :release do
     puts "You must be on the master branch to release!"
     exit!
   end
-  sh "git tag v#{version}"
+  sh "git tag -a -s v#{version}"
 end
 
 desc "Push #{gem_file} to Rubygems"
