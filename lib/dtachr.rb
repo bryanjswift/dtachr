@@ -47,9 +47,11 @@ module Dtachr
     def execute(command)
       `#{command}`
     end
-    
+
     def gen_socket
-      "tmp"
+      candidates = [('a'..'z'), ('A'..'Z'), (0..9)].map { |i| i.to_a }.flatten
+      name = (0...32).map { candidates[rand(candidates.length)] }.join
+      if (File.exists?(name)) then gen_socket else name end
     end
 
   end
