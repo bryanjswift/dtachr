@@ -33,7 +33,7 @@ module Dtachr
         :argv => args,
         :version => Dtachr::VERSION
       })
-      @socket = @opts['socket'] || gen_socket
+      @socket = @opts['--socket'] || gen_socket
       @command = @opts['<parts>'].join(' ')
     rescue Docopt::Exit => e
       puts e.message
