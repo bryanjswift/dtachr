@@ -1,27 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    celluloid (0.15.2)
-      timers (~> 1.1.0)
-    celluloid-io (0.15.0)
-      celluloid (>= 0.15.0)
-      nio4r (>= 0.5.0)
     docopt (0.5.0)
-    ffi (1.9.3)
     json (1.8.1)
-    listen (2.5.0)
-      celluloid (>= 0.15.2)
-      celluloid-io (>= 0.15.0)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-    nio4r (1.0.0)
     rake (10.1.0)
-    rb-fsevent (0.9.4)
-    rb-inotify (0.9.3)
-      ffi (>= 0.5.0)
     rdoc (4.0.1)
       json (~> 1.4)
-    timers (1.1.0)
 
 PLATFORMS
   ruby
@@ -29,6 +13,5 @@ PLATFORMS
 DEPENDENCIES
   bundler
   docopt
-  listen (~> 2.5.0)
   rake
   rdoc
