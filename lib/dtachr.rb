@@ -43,7 +43,19 @@ module Dtachr
 
     def call
       return unless @opts
-      execute("dtach -n #{@socket} #{@command} && #{notify_command}")
+      execute("dtach -n #{@socket} #{@command}")
+      @socket_abs = File.absolute_path(@socket)
+      pid = fork do
+        require 'socket'
+        sock = UNIXSocket.new(@socket_abs)
+        begin
+          sock.recv_io
+        rescue SocketError => err
+          execute(notify_command)
+          Process.exit(0)
+        end
+      end
+      Process.detach(pid)
     end
 
     private
