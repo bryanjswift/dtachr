@@ -35,6 +35,8 @@ module Dtachr
       })
       @socket = @opts['--socket'] || gen_socket
       @command = @opts['<parts>'].join(' ')
+      @message = @opts.fetch('--message', nil)
+      @message ||= default_message
     rescue Docopt::Exit => e
       puts e.message
     end
@@ -45,6 +47,10 @@ module Dtachr
     end
 
     private
+
+    def default_message
+      "'`#{@command}` finished.'"
+    end
 
     def execute(command)
       `#{command}`
@@ -58,7 +64,7 @@ module Dtachr
 
     def notify_command
       notifier = "terminal-notifier"
-      message = '-message ' + (@opts['--message'] || "'`#{@command}` finished.'")
+      message = "-message \"#{@message}\""
       title = @opts['--title'].dup if !@opts['--title'].nil?
       title.insert(0, '-title ') if !title.nil? && title.length > 0
       [notifier, title, message].join(' ')
