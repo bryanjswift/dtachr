@@ -61,7 +61,7 @@ module Dtachr
     private
 
     def default_message
-      "'`#{@command}` finished.'"
+      "'#{@command}' finished."
     end
 
     def execute(command)
